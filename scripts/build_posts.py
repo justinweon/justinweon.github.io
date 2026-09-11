@@ -48,6 +48,11 @@ def frontmatter(content: str) -> dict:
     return result
 
 
+def content_without_title(content: str) -> str:
+    body = re.sub(r'^---[\s\S]*?---\s*', '', content)
+    return re.sub(r'^\ufeff?\s*#\s+.+\r?\n+', '', body, count=1)
+
+
 def local_posts() -> list[dict]:
     records = []
     for category in ('daily', 'code', 'projects'):
@@ -57,7 +62,7 @@ def local_posts() -> list[dict]:
             meta = frontmatter(content)
             title_match = re.search(r'^#\s+(.+)$', content, re.M)
             title = meta.get('title') or (title_match.group(1) if title_match else clean_title(path.stem))
-            records.append({'id': f'{category}-{path.stem}', 'category': category, 'title': title, 'date': meta.get('date', ''), 'excerpt': meta.get('excerpt', '') or excerpt(content), 'content': re.sub(r'^---[\s\S]*?---\s*', '', content), 'source': ''})
+            records.append({'id': f'{category}-{path.stem}', 'category': category, 'title': title, 'date': meta.get('date', ''), 'excerpt': meta.get('excerpt', '') or excerpt(content), 'content': content_without_title(content), 'source': ''})
     return records
 
 
@@ -79,7 +84,7 @@ def til_posts() -> list[dict]:
         raw_url = f'https://raw.githubusercontent.com/{TIL_OWNER_REPO}/{BRANCH}/{quote(path)}'
         content = request_text(raw_url)
         heading = re.search(r'^#\s+(.+)$', content, re.M)
-        records.append({'id': 'til-' + re.sub(r'[^a-zA-Z0-9가-힣]+', '-', path).strip('-').lower(), 'category': 'til', 'title': heading.group(1).strip() if heading else clean_title(Path(path).stem), 'date': date_from_path(path), 'excerpt': excerpt(content), 'content': content, 'source': f'https://github.com/{TIL_OWNER_REPO}/blob/{BRANCH}/{path}'})
+        records.append({'id': 'til-' + re.sub(r'[^a-zA-Z0-9가-힣]+', '-', path).strip('-').lower(), 'category': 'til', 'title': heading.group(1).strip() if heading else clean_title(Path(path).stem), 'date': date_from_path(path), 'excerpt': excerpt(content), 'content': content_without_title(content), 'source': f'https://github.com/{TIL_OWNER_REPO}/blob/{BRANCH}/{path}'})
     return records
 
 
