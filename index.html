@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Justin's personal record system — daily notes, code lab, projects and TIL.">
+  <title>justin's notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Gowun+Dodum&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <section class="intro" id="intro" aria-label="파일 선택">
+    <p class="intro-kicker">PERSONAL RECORD SYSTEM / SELECT A FILE</p>
+    <div class="cabinet">
+      <div class="intro-note"><h1>justin's<br>notes</h1><p>일상, 학습, 프로젝트와 오늘의 배움을 정리하는 작은 개인 아카이브.</p></div>
+      <div class="openmark" aria-hidden="true">✣</div>
+      <div class="cards">
+        <i class="card-line"></i><i class="card-line"></i><i class="card-line"></i><i class="card-line"></i><i class="card-line"></i><i class="card-line"></i><i class="card-line"></i>
+        <button class="tab" data-category="daily">DAILY <b id="daily-count">00</b></button>
+        <button class="tab" data-category="code">CODE LAB <b id="code-count">00</b></button>
+        <button class="tab" data-category="projects">PROJECTS <b id="projects-count">00</b></button>
+        <button class="tab" data-category="til">TIL <b id="til-count">00</b></button>
+        <button class="tab active" data-category="all">ALL NOTES <b id="all-count">00</b></button>
+      </div>
+      <div class="tray"></div>
+    </div>
+  </section>
+
+  <main class="workspace" id="workspace">
+    <header class="topbar">
+      <a href="/" class="brand">justin's notes</a>
+      <span class="system">ARCHIVE_2026 / <b class="cobalt" id="current-category">ALL NOTES</b></span>
+      <button class="file-btn" id="files" type="button">FILES</button>
+      <button class="theme-label" id="theme-toggle" type="button" aria-label="다크 모드 전환">◐ THEME</button>
+    </header>
+    <section class="archive-head">
+      <p class="label" id="archive-label">ALL RECORDS / NEWEST FIRST</p>
+      <h2 id="archive-title">all notes,<br>kept on file.</h2>
+      <p id="archive-description">글을 선택하면 전체 기록을 볼 수 있습니다.</p>
+    </section>
+    <section class="folder-grid" id="post-grid" aria-live="polite"></section>
+  </main>
+  <button class="return" id="return" type="button" aria-label="파일 목록으로 돌아가기">←</button>
+  <script src="assets/site.js"></script>
+</body>
+</html>
