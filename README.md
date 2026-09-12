@@ -1,6 +1,8 @@
-# justin's notes
+# justine's notes
 
 GitHub Pages 기반 개인 기록 블로그입니다.
+
+https://justinweon.github.io
 
 ## 글 작성
 
