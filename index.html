@@ -1,49 +1,52 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Justin's personal record system — daily notes, code lab, projects and TIL.">
-  <title>justin's notes</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css">
+  <meta name="description" content="Justine's GitHub archive for TIL, AX study notes, AI news, and small projects.">
+  <title>Justine's Git Log</title>
   <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
-  <section class="intro" id="intro" aria-label="파일 선택">
-    <p class="intro-kicker">PERSONAL RECORD SYSTEM / SELECT A FILE</p>
-    <div class="cabinet">
-      <div class="intro-note"><h1>Justine's<br>blog</h1><p>AX engineer를 향해, 한 걸음씩 배우고 만드는 개발 기록.</p></div>
-      <div class="openmark" aria-hidden="true">✣</div>
-      <div class="cards">
-        <i class="card-line"></i><i class="card-line"></i><i class="card-line"></i><i class="card-line"></i><i class="card-line"></i><i class="card-line"></i><i class="card-line"></i>
-        <button class="tab" data-category="daily">DAILY <b id="daily-count">00</b></button>
-        <button class="tab" data-category="code">CODE LAB <b id="code-count">00</b></button>
-        <button class="tab" data-category="projects">PROJECTS <b id="projects-count">00</b></button>
-        <button class="tab" data-category="til">TIL <b id="til-count">00</b></button>
-        <button class="tab active" data-category="all">ALL NOTES <b id="all-count">00</b></button>
-      </div>
-      <div class="tray"></div>
-    </div>
-  </section>
-
-  <main class="workspace" id="workspace">
-    <header class="topbar">
-      <a href="/" class="brand">justin's notes</a>
-      <span class="system">ARCHIVE_2026 / <b class="cobalt" id="current-category">ALL NOTES</b></span>
-      <button class="file-btn" id="files" type="button">FILES</button>
-      <button class="theme-label" id="theme-toggle" type="button" aria-label="다크 모드 전환">◐ THEME</button>
+<body class="home-page">
+  <main class="shell">
+    <header class="site-header">
+      <a href="/" class="brand">JUSTINE'S GIT LOG<span>NOTES · REPOS · SMALL BUILDS</span></a>
+      <a class="github-link" href="https://github.com/justinweon" target="_blank" rel="noreferrer">GITHUB ↗</a>
     </header>
-    <section class="archive-head">
-      <p class="label" id="archive-label">ALL RECORDS / NEWEST FIRST</p>
-      <h2 id="archive-title">all notes,<br>kept on file.</h2>
-      <p id="archive-description">글을 선택하면 전체 기록을 볼 수 있습니다.</p>
-    </section>
-    <section class="folder-grid" id="post-grid" aria-live="polite"></section>
+
+    <div class="home-layout">
+      <aside class="sidebar" aria-label="Archive categories">
+        <div class="monogram" aria-hidden="true">J</div>
+        <h1>A small archive<br>of things made.</h1>
+        <p>Notes, projects, and AI studies kept close.</p>
+        <nav class="category-nav">
+          <button class="category active" data-category="all">ALL NOTES</button>
+          <button class="category" data-category="til">TIL</button>
+          <button class="category" data-category="ax">AX STUDY</button>
+          <button class="category" data-category="news">AI NEWS</button>
+          <button class="category" data-category="projects">MINI PROJECTS</button>
+        </nav>
+        <div class="stack"><span>PYTHON · JAVASCRIPT</span><span>HTML · CSS · SUPABASE</span></div>
+        <p class="sidebar-foot">GITHUB PAGES / MARKDOWN</p>
+      </aside>
+
+      <section class="home-surface">
+        <section class="welcome">
+          <p class="eyebrow">PERSONAL GITHUB ARCHIVE / 2026</p>
+          <h2>You will reach<br>your destination.</h2>
+          <p>A quiet record of what I am learning, building,<br>and noticing around AI.</p>
+          <button id="read-latest" class="soft-button">READ LATEST →</button>
+        </section>
+
+        <section class="latest" aria-live="polite">
+          <div class="latest-head"><p class="eyebrow" id="feed-label">LATEST NOTES</p><span id="feed-count"></span></div>
+          <div id="post-list" class="post-list"></div>
+          <p id="empty-state" class="empty-state" hidden>No notes here yet.</p>
+          <button id="view-all" class="view-all">VIEW ALL WRITING →</button>
+        </section>
+      </section>
+    </div>
   </main>
-  <button class="return" id="return" type="button" aria-label="파일 목록으로 돌아가기">←</button>
-  <script src="assets/site.js?v=20260912-1"></script>
+  <script src="assets/site.js"></script>
 </body>
 </html>

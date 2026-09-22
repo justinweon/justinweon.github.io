@@ -55,14 +55,22 @@ def content_without_title(content: str) -> str:
 
 def local_posts() -> list[dict]:
     records = []
-    for category in ('daily', 'code', 'projects'):
-        directory = POSTS_ROOT / category
+    # Keep the original `code` folder working, but surface it as AX Study.
+    categories = {
+        'daily': 'daily',
+        'code': 'ax',
+        'ax-study': 'ax',
+        'ai-news': 'news',
+        'projects': 'projects',
+    }
+    for directory_name, category in categories.items():
+        directory = POSTS_ROOT / directory_name
         for path in sorted(directory.glob('*.md'), reverse=True) if directory.exists() else []:
             content = path.read_text(encoding='utf-8')
             meta = frontmatter(content)
             title_match = re.search(r'^#\s+(.+)$', content, re.M)
             title = meta.get('title') or (title_match.group(1) if title_match else clean_title(path.stem))
-            records.append({'id': f'{category}-{path.stem}', 'category': category, 'title': title, 'date': meta.get('date', ''), 'excerpt': meta.get('excerpt', '') or excerpt(content), 'content': content_without_title(content), 'source': ''})
+            records.append({'id': f'{directory_name}-{path.stem}', 'category': category, 'title': title, 'date': meta.get('date', ''), 'excerpt': meta.get('excerpt', '') or excerpt(content), 'content': content_without_title(content), 'source': ''})
     return records
 
 

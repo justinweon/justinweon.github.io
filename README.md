@@ -1,40 +1,36 @@
-# justine's notes
+# Justine's Git Log
 
-GitHub Pages 기반 개인 기록 블로그입니다.
+A GitHub Pages archive for TIL, AX study notes, AI news, and small projects.
 
 https://justinweon.github.io
 
-## 글 작성
+## Add writing
 
-아래 폴더에 Markdown 파일을 추가하면 다음 Pages 배포에서 탭별로 표시됩니다.
+Add a Markdown file to one of these folders, then push to `main`:
 
 ```text
 posts/
-  daily/
-  code/
-  projects/
+  daily/       # General notes (included in All Notes)
+  code/        # Existing coding notes (shown as AX Study)
+  ax-study/    # New AX Study notes
+  ai-news/     # AI news and opinion posts
+  projects/    # Mini-project writeups and repository links
 ```
 
-예시:
+Each post can use this optional front matter:
 
 ```md
 ---
-title: 글 제목
-date: 2026-09-11
-excerpt: 카드에 보여 줄 짧은 설명
+title: A clear post title
+date: 2026-09-15
+excerpt: A short sentence shown on the home page.
 ---
 
-# 글 제목
+# A clear post title
 
-본문을 Markdown으로 작성합니다.
+Write the rest in Markdown. Tables and fenced code blocks are supported.
 ```
 
-## TIL 자동 동기화
+## TIL sync
 
-`justinweon/TIL` 공개 저장소의 모든 Markdown 기록은 빌드 때 자동으로 읽어 `TIL` 탭에 표시됩니다. 이 저장소의 Pages 워크플로는 다음 때 다시 빌드됩니다.
-
-- 이 저장소의 `main` 브랜치에 push할 때
-- GitHub Actions에서 수동 실행할 때
-- 6시간마다 자동 실행될 때
-
-TIL을 새로 올린 직후 반영하고 싶다면 이 저장소의 **Actions → Build and deploy notes → Run workflow**를 누르면 됩니다.
+Markdown files from the public [`justinweon/TIL`](https://github.com/justinweon/TIL) repository are imported automatically as TIL notes during the Pages build. The workflow runs on pushes to `main`, manually from GitHub Actions, and every six hours.
